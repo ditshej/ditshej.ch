@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>👻 👻 👻 👻 👻 👻 👻 👻 👻 👻 👻 👻 👻</title>
 </head>
-<body style="width: 100vw; height: 100vh; overflow: hidden;">
+<body style="width: 100vw; height: 100vh; overflow: hidden; background: #141414;">
 <?php
 $loops = 50000;
 $loop = 1;
