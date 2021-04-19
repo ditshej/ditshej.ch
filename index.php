@@ -9,7 +9,7 @@
 </head>
 <body style="width: 100vw; height: 100vh; overflow: hidden; background: #141414;">
 <?php
-$loops = 50000;
+$loops = 70000;
 $loop = 1;
 while ($loop < $loops) :
 $loop++;
