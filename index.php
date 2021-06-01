@@ -10,15 +10,12 @@
 </head>
 <body>
 
-<a class="ditshej-ghost" href="/photon-colors/" style="background: #003DB1">👻</a>
-<?php
-$loops = 75000;
-$loop = 1;
-while ($loop < $loops) :
-    $loop++;
-    ?>
-    <span class="ditshej-ghost">👻</span>
-<?php endwhile; ?>
+<nav>
+    <a href="/photon-colors/">
+        <span class="ditshej-ghost">👻</span>
+        <span>🎨</span>
+    </a>
+</nav>
 
 <div class="container">
     <svg class="ghost" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
