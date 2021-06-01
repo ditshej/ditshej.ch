@@ -10,13 +10,14 @@
 </head>
 <body>
 
+<a class="ditshej-ghost" href="/photon-colors/" style="background: #003DB1">👻</a>
 <?php
 $loops = 75000;
 $loop = 1;
 while ($loop < $loops) :
     $loop++;
     ?>
-    👻
+    <span class="ditshej-ghost">👻</span>
 <?php endwhile; ?>
 
 <div class="container">
