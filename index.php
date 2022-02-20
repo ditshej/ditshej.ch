@@ -15,6 +15,10 @@
         <span class="ditshej-ghost">👻</span>
         <span>🎨</span>
     </a>
+    <a href="/wishlist/">
+        <span class="ditshej-ghost">👻</span>
+        <span>🛍️</span>
+    </a>
 </nav>
 
 <div class="container">
