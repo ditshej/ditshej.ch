@@ -19,6 +19,10 @@
         <span class="ditshej-ghost">👻</span>
         <span>🛍️</span>
     </a>
+    <a href="/price-calc/">
+        <span class="ditshej-ghost">👻</span>
+        <span>🍰</span>
+    </a>
 </nav>
 
 <div class="container">
