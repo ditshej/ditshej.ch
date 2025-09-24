@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TCG Prize Calculator</title>
     <!-- Modern Favicon Setup -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="icon" href="/favicon-32x32.svg" sizes="32x32" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+    <link rel="icon" href="/price-calc/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/price-calc/favicon-32x32.svg" sizes="32x32" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/price-calc/apple-touch-icon.svg">
     <meta name="theme-color" content="#f97316">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -32,8 +32,8 @@
             -moz-appearance: textfield;
         }
     </style>
-  <script type="module" crossorigin src="/assets/index-DcRdgwep.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CAHR8Uw2.css">
+  <script type="module" crossorigin src="/price-calc/assets/index-DcRdgwep.js"></script>
+  <link rel="stylesheet" crossorigin href="/price-calc/assets/index-CAHR8Uw2.css">
 </head>
 <body class="min-h-screen bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50 p-4">
 
@@ -57,7 +57,7 @@
                     <form class="space-y-4" x-on:change="calculate()" @submit.prevent>
                         <div class="text-center">
                             <div class="flex items-center justify-center gap-2 mb-1">
-                                <img src="/icons/users.svg" alt="Players" class="w-5 h-5 text-gray-800">
+                                <img src="/price-calc/icons/users.svg" alt="Players" class="w-5 h-5 text-gray-800">
                                 <h2 class="text-lg font-bold text-gray-800">Players</h2>
                             </div>
                             <p class="text-gray-600 text-sm">How many people?</p>
@@ -92,7 +92,7 @@
                     <form class="space-y-4" x-on:change="calculate()" @submit.prevent>
                         <div class="text-center">
                             <div class="flex items-center justify-center gap-2 mb-1">
-                                <img src="/icons/swatch.svg" alt="Pricepool" class="w-5 h-5 text-gray-800">
+                                <img src="/price-calc/icons/swatch.svg" alt="Pricepool" class="w-5 h-5 text-gray-800">
                                 <h2 class="text-lg font-bold text-gray-800">Pricepool</h2>
                             </div>
                             <p class="text-gray-600 text-sm">Booster per Participant</p>
@@ -129,7 +129,7 @@
                     <form class="space-y-4" x-on:change="calculate()" @submit.prevent>
                         <div class="text-center">
                             <div class="flex items-center justify-center gap-2 mb-1">
-                                <img src="/icons/gift-top.svg" alt="Display Size" class="w-5 h-5 text-gray-800">
+                                <img src="/price-calc/icons/gift-top.svg" alt="Display Size" class="w-5 h-5 text-gray-800">
                                 <h2 class="text-lg font-bold text-gray-800">Display Size</h2>
                             </div>
                             <p class="text-gray-600 text-sm">Boosters in Display</p>
@@ -167,7 +167,7 @@
                 <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border border-orange-100">
                     <div class="text-center mb-2">
                         <div class="flex items-center justify-center gap-2 mb-1">
-                            <img src="/icons/chart-bar.svg" alt="Distribution Curve" class="w-5 h-5 text-gray-800">
+                            <img src="/price-calc/icons/chart-bar.svg" alt="Distribution Curve" class="w-5 h-5 text-gray-800">
                             <h2 class="text-lg font-bold text-gray-800">Distribution Curve</h2>
                         </div>
                         <p class="text-gray-600 text-sm">Adjust how steep the prize curve is</p>
@@ -236,7 +236,7 @@
                 <div class="space-y-4">
                     <div class="text-center">
                         <div class="flex items-center justify-center gap-2 mb-2">
-                            <img src="/icons/chart-pie.svg" alt="Results" class="w-5 h-5 text-gray-800">
+                            <img src="/price-calc/icons/chart-pie.svg" alt="Results" class="w-5 h-5 text-gray-800">
                             <h2 class="text-lg font-bold text-gray-800">Results</h2>
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                         <!-- Total boosters -->
                         <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 shadow-sm border border-purple-100">
                             <div class="text-center">
-                                <img src="/icons/swatch.svg" alt="Total" class="w-6 h-6 mx-auto mb-1 text-purple-600">
+                                <img src="/price-calc/icons/swatch.svg" alt="Total" class="w-6 h-6 mx-auto mb-1 text-purple-600">
                                 <div class="text-purple-600 text-xs font-semibold uppercase mb-1">Total</div>
                                 <div class="text-xl font-bold text-purple-800" x-text="boosterTotal"></div>
                             </div>
@@ -253,7 +253,7 @@
                         <!-- Displays -->
                         <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 shadow-sm border border-blue-100">
                             <div class="text-center">
-                                <img src="/icons/gift-top.svg" alt="Displays"
+                                <img src="/price-calc/icons/gift-top.svg" alt="Displays"
                                      class="w-6 h-6 mx-auto mb-1 text-blue-600">
                                 <div class="text-blue-600 text-xs font-semibold uppercase mb-1">Displays</div>
                                 <div class="text-xl font-bold text-blue-800" x-text="displaysFull"></div>
@@ -264,7 +264,7 @@
                         <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-4 shadow-sm border border-amber-100"
                              x-show="boostersInPartDisplay > 0">
                             <div class="text-center">
-                                <img src="/icons/tag.svg" alt="Extra" class="w-6 h-6 mx-auto mb-1 text-amber-600">
+                                <img src="/price-calc/icons/tag.svg" alt="Extra" class="w-6 h-6 mx-auto mb-1 text-amber-600">
                                 <div class="text-amber-600 text-xs font-semibold uppercase mb-1">Extra</div>
                                 <div class="text-xl font-bold text-amber-800" x-text="boostersInPartDisplay"></div>
                             </div>
@@ -277,7 +277,7 @@
             <div class="space-y-4">
                 <div class="text-center">
                     <div class="flex items-center justify-center gap-2 mb-1">
-                        <img src="/icons/cake.svg" alt="Prize Distribution" class="w-5 h-5 text-gray-800">
+                        <img src="/price-calc/icons/cake.svg" alt="Prize Distribution" class="w-5 h-5 text-gray-800">
                         <h3 class="text-lg font-bold text-gray-800">Prize Distribution</h3>
                     </div>
                 </div>
@@ -305,7 +305,7 @@
                 <p class="text-xs text-gray-400">
                     Made for One Piece and other TCGs at <a href="https://www.twomoons.ch/events/one-piece-events/"
                                                             class="text-orange-600 font-medium">Two Moons</a><br/>
-                    <img src="/icons/heart.svg" alt="Heart" class="inline w-4 h-4"> Made for Päde · 2025 · by <a
+                    <img src="/price-calc/icons/heart.svg" alt="Heart" class="inline w-4 h-4"> Made for Päde · 2025 · by <a
                         href="https://ditshej.ch" class="text-orange-600 font-medium">ditshej</a> | <a
                         href="https://github.com/ditshej/tcg-price-calculator" class="text-orange-600 font-medium">Github</a>
                 </p>
