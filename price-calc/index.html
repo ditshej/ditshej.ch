@@ -32,8 +32,8 @@
             -moz-appearance: textfield;
         }
     </style>
-  <script type="module" crossorigin src="/price-calc/assets/index-DcRdgwep.js"></script>
-  <link rel="stylesheet" crossorigin href="/price-calc/assets/index-CAHR8Uw2.css">
+  <script type="module" crossorigin src="/price-calc/assets/index-CdIXkDX5.js"></script>
+  <link rel="stylesheet" crossorigin href="/price-calc/assets/index-DzUaZDGl.css">
 </head>
 <body class="min-h-screen bg-gradient-to-br from-rose-50 via-orange-50 to-amber-50 p-4">
 
@@ -164,7 +164,7 @@
             <div class="space-y-6 landscape:grid landscape:grid-cols-2 landscape:gap-6 landscape:space-y-0">
 
                 <!-- Distribution Curve Exponent Input - Mobile Optimized -->
-                <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border border-orange-100">
+                <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border border-orange-100 flex flex-col justify-between">
                     <div class="text-center mb-2">
                         <div class="flex items-center justify-center gap-2 mb-1">
                             <img src="/price-calc/icons/chart-bar.svg" alt="Distribution Curve" class="w-5 h-5 text-gray-800">
@@ -227,46 +227,69 @@
                         </div>
                         <div class="text-xs text-gray-700 mt-1">
                             <span class="font-semibold">Current:</span>
-                            <span x-text="distributionCurveExponent"></span>
+                            <template x-if="!editingExponent">
+                                <span x-text="distributionCurveExponent" class="cursor-pointer underline decoration-dotted decoration-orange-400 hover:text-orange-600" @click="startEditingExponent()"></span>
+                            </template>
+                            <template x-if="editingExponent">
+                                <input type="number" step="0.01" min="0.01" x-model="tempExponent" @keydown.enter="finishEditingExponent()" @blur="finishEditingExponent()" class="w-16 px-1 py-0.5 border border-orange-300 rounded text-center focus:ring-2 focus:ring-orange-200">
+                            </template>
                         </div>
                     </div>
                 </div>
 
-                <!-- Compact Results -->
-                <div class="space-y-4">
-                    <div class="text-center">
-                        <div class="flex items-center justify-center gap-2 mb-2">
-                            <img src="/price-calc/icons/chart-pie.svg" alt="Results" class="w-5 h-5 text-gray-800">
-                            <h2 class="text-lg font-bold text-gray-800">Results</h2>
-                        </div>
+                <!-- Results + Winner gets Display Checkbox -->
+                <div class="flex flex-col justify-between h-full space-y-4">
+                    <!-- Winner gets full display checkbox, now styled and above Results -->
+                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4 border border-orange-100 flex items-center gap-2 mb-2">
+                        <input type="checkbox"
+                               id="winnerGetsDisplay"
+                               :checked="winnerGetsDisplay"
+                               :disabled="!canWinnerGetDisplay()"
+                               @change="toggleWinnerGetsDisplay()"
+                               class="accent-orange-500 w-5 h-5 rounded border border-orange-300 disabled:opacity-40 disabled:cursor-not-allowed">
+                        <label for="winnerGetsDisplay" class="text-sm text-gray-700 select-none font-medium">
+                            Winner gets a full display
+                        </label>
+                        <template x-if="!canWinnerGetDisplay()">
+                            <span class="ml-2 text-xs text-gray-400">(not enough boosters)</span>
+                        </template>
                     </div>
-                    <div class="grid grid-cols-3 gap-3">
-                        <!-- Total boosters -->
-                        <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 shadow-sm border border-purple-100">
-                            <div class="text-center">
-                                <img src="/price-calc/icons/swatch.svg" alt="Total" class="w-6 h-6 mx-auto mb-1 text-purple-600">
-                                <div class="text-purple-600 text-xs font-semibold uppercase mb-1">Total</div>
-                                <div class="text-xl font-bold text-purple-800" x-text="boosterTotal"></div>
+                    <!-- Compact Results -->
+                    <div class="space-y-4">
+                        <div class="text-center">
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <img src="/price-calc/icons/chart-pie.svg" alt="Results" class="w-5 h-5 text-gray-800">
+                                <h2 class="text-lg font-bold text-gray-800">Results</h2>
                             </div>
                         </div>
-
-                        <!-- Displays -->
-                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 shadow-sm border border-blue-100">
-                            <div class="text-center">
-                                <img src="/price-calc/icons/gift-top.svg" alt="Displays"
-                                     class="w-6 h-6 mx-auto mb-1 text-blue-600">
-                                <div class="text-blue-600 text-xs font-semibold uppercase mb-1">Displays</div>
-                                <div class="text-xl font-bold text-blue-800" x-text="displaysFull"></div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <!-- Total boosters -->
+                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 shadow-sm border border-purple-100">
+                                <div class="text-center">
+                                    <img src="/price-calc/icons/swatch.svg" alt="Total" class="w-6 h-6 mx-auto mb-1 text-purple-600">
+                                    <div class="text-purple-600 text-xs font-semibold uppercase mb-1">Total</div>
+                                    <div class="text-xl font-bold text-purple-800" x-text="boosterTotal"></div>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Remaining -->
-                        <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-4 shadow-sm border border-amber-100"
-                             x-show="boostersInPartDisplay > 0">
-                            <div class="text-center">
-                                <img src="/price-calc/icons/tag.svg" alt="Extra" class="w-6 h-6 mx-auto mb-1 text-amber-600">
-                                <div class="text-amber-600 text-xs font-semibold uppercase mb-1">Extra</div>
-                                <div class="text-xl font-bold text-amber-800" x-text="boostersInPartDisplay"></div>
+                            <!-- Displays -->
+                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 shadow-sm border border-blue-100">
+                                <div class="text-center">
+                                    <img src="/price-calc/icons/gift-top.svg" alt="Displays"
+                                         class="w-6 h-6 mx-auto mb-1 text-blue-600">
+                                    <div class="text-blue-600 text-xs font-semibold uppercase mb-1">Displays</div>
+                                    <div class="text-xl font-bold text-blue-800" x-text="displaysFull"></div>
+                                </div>
+                            </div>
+
+                            <!-- Remaining -->
+                            <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-4 shadow-sm border border-amber-100"
+                                 x-show="boostersInPartDisplay > 0">
+                                <div class="text-center">
+                                    <img src="/price-calc/icons/tag.svg" alt="Extra" class="w-6 h-6 mx-auto mb-1 text-amber-600">
+                                    <div class="text-amber-600 text-xs font-semibold uppercase mb-1">Extra</div>
+                                    <div class="text-xl font-bold text-amber-800" x-text="boostersInPartDisplay"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
